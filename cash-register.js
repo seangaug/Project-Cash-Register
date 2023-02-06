@@ -1,15 +1,15 @@
 function cashRegister(price, cash, cid) {
     
     // let result = {status: "", change []}
-    let drawer = {
-        "PENNY": 1.01,
-        "NICKEL": 2.05,
-        "DIME": 3.1,
-        "QUARTER": 4.25,
-        "ONE": 90,
-        "FIVE": 55,
-        "TEN": 20,
-        "TWENTY": 60,
+    let baseDrawer = {
+        "PENNY": 0.01,
+        "NICKEL": 0.05,
+        "DIME": 0.1,
+        "QUARTER": 0.25,
+        "ONE": 1,
+        "FIVE": 5,
+        "TEN": 10,
+        "TWENTY": 20,
         "ONE HUNDRED": 100
     };
     // declare counters - one for amount in till, one for change due
@@ -29,34 +29,16 @@ function cashRegister(price, cash, cid) {
         }
     } else if (change === totalCID) {
         return {
-            status: "CLOSED", change: [cid]
+            status: "CLOSED", change: cid
         }
     }
-
-
-
-    
-    
-
-    // Create variable for calculation of diff between cash, price - if (conditional) cash given < price. Status "Incorrect Payment" plus empty array for change.
-    
-    if(cash < price) {
-        return {status: "INCORRECT_PAYMENT"; change []}
-    }
-
-    // Compare above calc to amount in till. If change due > cash in draw, return "Insufficint Funds", plues empty array for change.
-
-    // var change = cash - price (use in above calc also?)
-
-    if(change > cid) {
-        return {status: "INSUFFICIENT FUNDS"; change []}
-    }
-
-    // Can we give them exact change from draw? . N - return "insufficient funds". Y - return "Closed" and exact change/cid in array, include zero values.
-
-    // Is cash in draw more than change is due(CID === price)
-
-    // Given the above, if we can give them change and CID remains above zero, return "open", with array of change due, no zero values in array.
-
-    // return object e.g. {status: " ", change []}
 }
+    
+    // Only remaining outcomes at this point:
+    // 1 - CID > Change and we can be it exactly or;
+    // 2 - CID > Change however we do not have the exactly change to pay out
+
+//     else {
+//         cid = cid.reverse()
+//         console.log(cid)
+//     }
